@@ -1,1 +1,1 @@
-# Mamba-Graph
+# Mamba-Graph Modeling
