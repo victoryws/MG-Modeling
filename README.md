@@ -1,1 +1,1 @@
-# Mamba-Graph Modeling
+# MG Modeling
