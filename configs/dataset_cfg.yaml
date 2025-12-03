@@ -1,0 +1,224 @@
+base_path: '~/py_code/DATASET/event_data'
+
+DVSCLEAN:
+  camera_xy: [1280, 720]
+  train_type: 'train_dvsclean'
+  val_type: 'val_dvsclean'
+  ev_cnt: 2048
+  overlap_ratio: 0.1
+
+  trim_ratio_start: 0.15
+  trim_ratio_end: 0.15
+
+  graph_params:
+    loop: True
+    radius: 0.06
+
+    max_num_neighbors: 32 
+    
+    num_components: None
+    min_nodes_lcc: 32
+    min_mean_ratio: 0.20 
+    
+  train_batch_size: 16
+  val_batch_size: 16
+  test_batch_size: 1
+
+  train_shuffle: True
+  val_shuffle: False
+  test_shuffle: False
+
+  num_workers: 6
+
+
+###################################################################################
+
+EDKOGTL:
+  camera_xy: [346, 260]
+  train_type: 'train_edkogtl'
+  val_type: 'val_edkogtl'
+  ev_cnt: 2048
+  overlap_ratio: 0.25 
+  
+  trim_ratio_start: 0.15
+  trim_ratio_end: 0.15
+
+  graph_params:
+    loop: True
+    radius: 0.06 
+    max_num_neighbors: 32
+    
+    num_components: None
+    min_nodes_lcc: 32
+    min_mean_ratio: 0.20 
+    
+  train_batch_size: 16
+  val_batch_size: 16
+  test_batch_size: 1
+
+  train_shuffle: True
+  val_shuffle: False
+  test_shuffle: False
+
+  num_workers: 8
+
+
+###################################################################################
+
+THUEACT50CHL:
+  camera_xy: [346, 260] 
+
+  ev_cnt: 2048 
+  overlap_ratio: 0.25
+
+  trim_ratio_start: 0.35
+  trim_ratio_end: 0.15
+
+  graph_params:
+    loop: True
+    radius: 0.06
+    max_num_neighbors: 16
+    num_components: None
+    min_nodes_lcc: 32
+
+  train_batch_size: 16
+  val_batch_size: 16
+  test_batch_size: 1
+
+  train_shuffle: True
+  val_shuffle: False
+  test_shuffle: False
+
+
+
+conf_THUEACT50CHL:
+  ev_cnt: 2048
+
+  pre_process:
+    overlap_ratio: 0.25
+    padding_threshold_ratio: 0.25
+
+  # data_gen
+  graph_params:
+    if_use_lcc: False
+    # if_use_lcc  True
+    if_use_saved_graph: False
+    loop: True
+    min_nodes_lcc: 500
+    radius: 0.25
+    max_num_neighbors: 32
+
+    k_for_knn: 16
+    
+  train_batch_size: 50
+  val_batch_size: 50
+  test_batch_size: 1
+
+  train_shuffle: True
+  val_shuffle: False
+  test_shuffle: False
+
+  num_workers: 10
+
+
+
+DVSACTION:
+  camera_xy: [346, 260]
+  ev_cnt: 2048
+  overlap_ratio: 0.25
+
+  trim_ratio_start: 0.35
+  trim_ratio_end: 0.15
+
+  graph_params:
+    loop: True
+    radius: 0.08
+    max_num_neighbors: 16
+    
+    num_components: None
+    min_nodes_lcc: 32
+    
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 1
+
+  train_shuffle: True
+  val_shuffle: False
+  test_shuffle: False
+
+  num_workers: 8
+
+
+HMDB51DVS:
+  camera_xy: [240, 180]
+
+
+UCF101DVS:
+  camera_xy: [240, 180]
+
+
+
+GEN1:
+  train_batch_size: 20
+  val_batch_size: 20
+  test_batch_size: 1
+
+  train_shuffle: False
+  val_shuffle: False
+  test_shuffle: False
+
+  ev_cnt: 20000
+  t_factor: 4
+
+  if_use_preprocessed: False
+  bag_type: 'labeled'
+
+GEN4:
+    # data_gen
+    train_batch_size: 1
+    val_batch_size: 1
+    test_batch_size: 1
+
+    train_shuffle: True
+    val_shuffle: False
+    test_shuffle: False
+
+    ev_cnt: 20000
+    t_factor: 2
+
+    if_use_preprocessed: True
+    bag_type: 'labeled'
+
+NCARS:
+    train_batch_size: 32
+    val_batch_size: 1
+    test_batch_size: 1
+
+    train_shuffle: True
+    val_shuffle: False
+    test_shuffle: False
+
+
+split_val_size: 0.1
+split_test_size: 0.2
+num_workers: 10
+pin_memory: False
+
+
+graph_connection:
+  if_use_auto: False
+  if_use_gen1: True
+  if_use_gen4: False
+  gen1:
+    radius: 4
+    max_num_neighbors: 32
+    loop: True
+  gen4:
+    radius: 8
+    max_num_neighbors: 64
+    loop: True
+
+subgraph_setting:
+  num_components: None
+  min_nodes_cnt_in_subgraph: 100
+  connection: 'weak'

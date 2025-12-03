@@ -1,0 +1,42 @@
+DVSCLEAN:
+  num_classes: 2
+  dropout: 0.2
+
+  if_hierarchical: False
+  channels_list: [128, 256, 256]
+  hierarchical_params:
+    
+    gnn_type: 'GCN'
+    gnn_dropout: 0.2
+    gat_heads: 4
+  
+  loss:
+    type: 'focal_loss'
+    
+    alpha: [0.22, 0.78]
+    gamma: 1.0
+    
+    label_smoothing: 0.1
+
+
+###################################################################
+
+EDKOGTL:
+  num_classes: 2
+
+  if_hierarchical: False
+  channels_list: [128, 256, 512]
+  hierarchical_params:
+    gnn_type: 'GCN'
+    gnn_dropout: 0.1
+    gat_heads: 4
+  
+  dropout: 0.2
+  loss:
+    type: 'focal_loss'
+    
+    alpha: [0.02, 0.98]
+    
+    gamma: 2.0
+    
+    label_smoothing: 0.1 

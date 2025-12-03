@@ -1,0 +1,88 @@
+optimizer_type: 'adamw'
+scheduler_type: 'onecyclelr'
+
+if_run_lr_finder: False
+
+weight_init_type: kaiming_normal
+
+adamw:
+  params:
+    lr: 0.00001
+    weight_decay: 0.000001
+
+sgd:
+  params:
+    lr: 0.0002
+    momentum: 0.95
+    weight_decay: 0.00001
+
+adam:
+  params:
+    lr: 0.00001
+    weight_decay: 0.00001
+
+
+
+
+
+cosineannealinglr:
+  params:
+    T_max: 100
+    eta_min: 0.000001
+
+
+steplr:
+  params:
+    step_size: 10
+    gamma: 0.1
+
+reducelronplateau:
+  params:
+    mode: 'max'
+    factor: 0.1
+    patience: 5
+    verbose: True
+
+none:
+  params:
+
+onecyclelr:
+  params:
+    max_lr: 0.00006
+    anneal_strategy: 'cos'
+    div_factor: 100
+    final_div_factor: 1000
+    pct_start: 0.3
+
+if_resume_from_ckpt: False
+last_run_id: 
+resume_ckpt: 
+
+
+trainer:
+  devices: [1]
+  
+  strategy:
+    process_group_backend: 'nccl'
+    find_unused_parameters: True
+    gradient_as_bucket_view: True
+  
+  accelerator: 'gpu'
+  enable_checkpointing: True
+  num_sanity_val_steps: 0
+  
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  limit_test_batches: 0.2
+
+  max_epochs: 100
+  log_every_n_steps: 10
+  precision: '16-mixed'
+  benchmark: True
+  deterministic: False
+
+  val_check_interval: 1.0
+  check_val_every_n_epoch: 1
+
+  accumulate_grad_batches: 1
+  gradient_clip_val: 0.5

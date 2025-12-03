@@ -1,0 +1,5 @@
+ckpt_folder: '~/py_code/eg_mamba/logs/ckpt'
+
+tensorboard_folder: '~/py_code/eg_mamba/logs/tensorboard'
+
+test_output_folder: '~/py_code/eg_mamba/logs/test_output'

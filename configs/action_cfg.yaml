@@ -1,0 +1,25 @@
+THUEACT50CHL:
+  num_classes: 50
+  channels_list: [128, 512, 1024]
+  dropout: 0.2
+
+  if_hierarchical: True
+  hierarchical_params:
+    gnn_type: 'GCN'
+    pooling_ratio: 1.0
+    pooling_type: 'none'
+    gnn_dropout: 0.1
+    gat_heads: 4
+
+    if_use_skip: True
+  
+
+
+
+DVSACTION:
+
+
+
+
+
+
